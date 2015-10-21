@@ -1,0 +1,137 @@
+html, body, #right-panel {
+  height: 100%;
+  width: 100%;
+}
+
+#right-panel {
+  background-color: #fff;
+
+  -moz-box-shadow: 0 0 20px #888;
+  -webkit-box-shadow: 0 0 20px #888;
+  box-shadow: 0 0 20px #888;
+}
+
+#left-panel {
+  width: 265px;
+  padding: 0 10px;
+  top: 0px;
+  left:0px;
+  bottom: 0px;
+  background: #484B4C;
+  border-right: solid 1px #000;
+  color: #ddd;    
+}
+
+.scrollable{
+    overflow: auto;
+    -webkit-transition-property: top, bottom;
+    transition-property: top, bottom;
+    -webkit-transition-duration: .2s, .2s;
+    transition-duration: .2s, .2s;
+    -webkit-transition-timing-function: linear, linear;
+    transition-timing-function: linear, linear;
+    -webkit-overflow-scrolling: touch;
+}
+
+#left-panel>.welcome {
+    padding: 10px;
+}
+
+#left-panel>.list {
+    list-style-type:none;
+}
+
+#left-panel>.list>li {
+    border-bottom: solid 1px #444;
+    padding: 8px;
+}
+
+.list-item:not(:first-of-type) {
+    border-top: solid 1px #555;
+}
+
+#left-panel>.list>.list-item h3 {
+    margin: 0px;
+    font-size: 16px;
+    color: #e5e5e5;
+}
+
+#left-panel>.list>.list-item p {
+    margin: 0px;
+}
+
+#left-panel>.list>li:active {
+    background-color: #393939;
+}
+
+#left-panel>.title {
+    background: #444;
+    /*opacity: .3;*/
+    padding: 4px;
+    border-top: solid 1px #555;
+    border-bottom: solid 1px #333;
+    /*border-bottom: solid 1px #555;*/
+}
+
+#left-panel i {
+    font-size: 28px;
+    float:left;
+    margin-right: 8px;
+    width: 28px;
+}
+
+#container {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+#container.offset {
+    -webkit-transform: translate3d(200px, 0, 0);
+    transform: translate3d(200px, 0, 0);
+}
+
+#container.transition {
+    -webkit-transition-duration: .25s;
+    transition-duration: .25s;
+}
+
+#content {
+    position: absolute;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    top: 44px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: #fff;
+}
+
+#canvas.center {
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 85%;
+    background-color: #fff;
+}
+
+.margin-top2  { margin-top: 2px; }
+.margin-top5 { margin-top: 5px; }
+.margin-top10 { margin-top: 10px; }
+.margin-top15 { margin-top: 15px; }
+.margin-top30 { margin-top: 30px; }
+.margin-top40 { margin-top: 40px; }
+.margin-top60 { margin-top: 60px; }
+.margin-top80 { margin-top: 80px; }
+.margin-top100 { margin-top: 100px; }
+.margin-top150 { margin-top: 150px; }
+
+.light-gray {
+  background-color: #f9f9f9;
+}
+
+.dark-gray {
+  background-color: #dddddd;
+}

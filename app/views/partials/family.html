@@ -1,0 +1,47 @@
+<div id="canvas" class="center">
+    <div>
+        <h3>Manage People</h3>    
+    </div>   
+    <div ng-controller="FamilyListCtrl">
+            <table class="table table-bordered data-table sort display">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="family in families | orderBy:order:reverse" ng-switch on="isSelected(family)">
+                    <tr ng-switch-default ng-class-odd="'light-gray'" ng-class-even="'dark-gray'">
+						<td ng-click="selectFamily(family)"><i class="glyphicon glyphicon-plus"></i></td>
+						<td>{{family.name}}</td>
+					</tr>
+					<tr ng-switch-when="true" ng-class-odd="'light-gray'" ng-class-even="'dark-gray'">
+						<td ng-click="unselectFamily()"><i class="glyphicon glyphicon-minus"></i></td>
+						<td colspan="2">
+							<div class="panel panel-default">
+							  <div class="panel-heading">
+							    	<h3 class="panel-title"><strong>Edit Family</strong></h3>
+							  </div>
+							  <div class="panel-body" ng-controller="FamilyCtrl">
+							    	<form name="familyForm" novalidate role="form"> 
+                                          <div id="message" ng-class="{'alert alert-success':(!error), 'alert alert-danger':(error)}" ng-show="message" ng-bind="message"></div>
+                                          <div class="form-group">
+                                            <label class="control-label" for="familyForm">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter family name" ng-model="family.name" ng-trim="true" required>
+                                            <span class="label label-danger" ng-show="familyForm.name.$error.required">Required!</span>
+                                          </div>
+                           
+                                          <div class="form-group">  
+                                                
+                                              <button class="btn btn-info" ng-click="saveFamily( family )">Update Family</button>
+                                              
+                                          </div>
+                                    </form>
+							     </div>
+							</div>				
+						</td>
+					</tr>
+                </tbody>
+            </table>
+        </div>
+</div>

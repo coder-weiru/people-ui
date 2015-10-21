@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>People UI</title>
+        <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+        <link href="lib/angular-snap/angular-snap.css" rel="stylesheet"/>
+        <link href="lib/snapjs/snap.css" rel="stylesheet"/>
+        <link href="lib/fontawesome/css/font-awesome.css" rel="stylesheet"/> 
+        <link href="styles/main.css" rel="stylesheet">
+    </head>
+    
+    <body>
+
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+        
+        <div id="left-panel" snap-drawer>
+            <div class="welcome">Welcome People Service User</div>
+            <div class="title">Menu</div>
+            <ul class="list">
+                <li class="list-item">
+                    <a class="item-content" href="#dashboard/1">
+                        <i class="ion-clock"></i>
+                        <h3>Manage People</h3>
+                        <p>Add/Update a person</p>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a class="item-content" href="#dashboard/2">
+                        <i class="ion-android-calendar"></i>
+                        <h3>Manage Family</h3>
+                        <p>Add/Update a family</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div id="right-panel" snap-content snap-options="snapOptions" ng-app="MainApp" ng-controller="MainCtrl">
+            
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                  <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" 
+                                    data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>   
+                            <button snap-toggle id="btn-menu" class="button button-icon" ng-click="toggleMenu()" style="font-size: 22px; border:0px solid transparent; padding: 11px 16px;">
+                                <i class="glyphicon glyphicon-menu-hamburger"></i>
+                            </button>
+                        </div>  
+                        <p class="navbar-text"><strong>People UI Application</strong></p>
+                  </div>
+            </div>
+                        
+            <div id="content" class="slide-animate" ng-view></div>
+
+        </div>
+
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="lib/fastclick/lib/fastclick.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular-route/angular-route.js"></script>
+        <script src="lib/angular-snap/angular-snap.js"></script>
+        <script src="lib/snapjs/snap.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/services/peopleService.js"></script>
+        <script src="scripts/controllers/personController.js"></script>
+        <script src="scripts/controllers/familyController.js"></script>
+    </body>
+    
+</html>
