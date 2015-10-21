@@ -16,8 +16,7 @@ familyModule.controller('FamilyListCtrl', function($scope, PeopleService) {
 	};
 	
 	$scope.listFamilies();
-	
-    
+	   
     $scope.selectFamily = function(family) {
 		$scope.selected = family;
 	};
@@ -30,22 +29,38 @@ familyModule.controller('FamilyListCtrl', function($scope, PeopleService) {
 		return (family && $scope.selected && $scope.selected.fid === family.fid);
 	};
     
+    $scope.addNewFamily = function() {       
+        var family = {};
+		family.name = '';
+		$scope.families.unshift( family );
+        $scope.selectFamily(family);
+	};
+    
+    $scope.isNewFamily = function( family ) {
+		return family!=null && family.fid==null;
+	};
 });
 
 familyModule.controller('FamilyCtrl', function($scope, $log, PeopleService) {
 	
+    var family = $scope.family;
+    
     $scope.saveFamily = function ( family ) {
         
         if ($scope.familyForm.$invalid) {
 		    return;
 		}
-		var promise = PeopleService.updateFamily( family );
-		
+        var promise;
+		if ($scope.isNewFamily($scope.selected)) {
+			promise = PeopleService.addFamily( family );
+		} else {
+			promise = PeopleService.updateFamily( family );
+		}
         promise.then(function(response) { 
             var data = response.data;
             if (response.statusText == 'OK') {
                 $scope.error = false;   
-                $scope.message = 'Family is saved.';
+                $scope.message = 'Family ' + family.name + ' is saved.';
 		    } else {
                 $scope.error = true;   
 		    	$scope.message = 'Error encountered.';
@@ -63,4 +78,8 @@ familyModule.controller('FamilyCtrl', function($scope, $log, PeopleService) {
 		});
 	};
      
+    $scope.canSave = function() {
+	    return $scope.familyForm.$valid && $scope.familyForm.$dirty;
+	};
+    
 });
