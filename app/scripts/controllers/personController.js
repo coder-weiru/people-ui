@@ -30,22 +30,39 @@ personModule.controller('PersonListCtrl', function($scope, PeopleService) {
 		return (person && $scope.selected && $scope.selected.pid === person.pid);
 	};
     
+    $scope.addNewPerson = function() {       
+        var person = {};
+		person.name = '';
+		$scope.people.unshift( person );
+        $scope.selectPerson(person);
+	};
+    
+    $scope.isNewPerson = function( person ) {
+		return person!=null && person.pid==null;
+	};
+    
 });
 
 personModule.controller('PersonCtrl', function($scope, $log, PeopleService) {
 	
+    var person = $scope.person;
+    
     $scope.savePerson = function ( person ) {
         
         if ($scope.personForm.$invalid) {
 		    return;
 		}
-		var promise = PeopleService.updatePerson( person );
-		
+		var promise;
+		if ($scope.isNewPerson($scope.selected)) {
+			promise = PeopleService.addPerson( person );
+		} else {
+			promise = PeopleService.updatePerson( person );
+		}
         promise.then(function(response) { 
             var data = response.data;
             if (response.statusText == 'OK') {
                 $scope.error = false;   
-                $scope.message = 'Person is saved.';
+                $scope.message = 'Person ' + person.name + ' is saved.';
 		    } else {
                 $scope.error = true;   
 		    	$scope.message = 'Error encountered.';
@@ -63,4 +80,7 @@ personModule.controller('PersonCtrl', function($scope, $log, PeopleService) {
 		});
 	};
      
+    $scope.canSave = function() {
+	    return $scope.personForm.$valid && $scope.personForm.$dirty;
+	};
 });

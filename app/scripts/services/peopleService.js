@@ -35,7 +35,7 @@ angular.module('service.people', [])
 	service.updateFamily = function(family) {
 		var serviceUrl = SERVICE_CONFIG.URL + "/family/update";
 		var postConfig = {};
-		return $http.post(serviceUrl, Family, postConfig).then(function(response) {
+		return $http.post(serviceUrl, family, postConfig).then(function(response) {
 			return response;
 		});
 	};
@@ -61,7 +61,7 @@ angular.module('service.people', [])
 	service.addPerson = function(person) {
 		var serviceUrl = SERVICE_CONFIG.URL + "/person";
 		var postConfig = {};
-		return $http.post(serviceUrl, Person, postConfig).then(function(response) {
+		return $http.post(serviceUrl, person, postConfig).then(function(response) {
 			return response;
 		});
 	};
@@ -69,7 +69,7 @@ angular.module('service.people', [])
 	service.updatePerson = function(person) {
 		var serviceUrl = SERVICE_CONFIG.URL + "/person/update";
 		var postConfig = {};
-		return $http.post(serviceUrl, Person, postConfig).then(function(response) {
+		return $http.post(serviceUrl, person, postConfig).then(function(response) {
 			return response;
 		});
 	};
