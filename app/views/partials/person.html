@@ -38,7 +38,7 @@
 
                                           <div class="form-group">
                                             <label class="control-label" for="email">Family</label>
-                                            <input type="text" class="form-control" id="family" name="family" placeholder="Enter person family" ng-model="person.family.name" ng-trim="true">
+                                            <select class="form-control" name="family" id="family" ng-model="person.family" placeholder="Select person family" ng-options="fam.name for fam in families track by fam.fid"></select>  
                                           </div>
                                         
                                           <div class="form-group">  

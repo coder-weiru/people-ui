@@ -8,18 +8,25 @@ personModule.controller('PersonListCtrl', function($scope, PeopleService) {
 	
     $scope.people = [];
     $scope.selected = null;
+    $scope.families = [];
     
-	$scope.listPeople = function() {
+	$scope.listFamilies = function() {
+		PeopleService.findFamily("").then(function(data) {
+			$scope.families = data;
+		});
+	};
+    
+    $scope.listPeople = function() {
 		PeopleService.findPerson("").then(function(data) {
 			$scope.people = data;
 		});
 	};
 	
 	$scope.listPeople();
-	
-    
+	  
     $scope.selectPerson = function(person) {
 		$scope.selected = person;
+        $scope.listFamilies();
 	};
 
 	$scope.unselectPerson = function() {
@@ -45,8 +52,6 @@ personModule.controller('PersonListCtrl', function($scope, PeopleService) {
 
 personModule.controller('PersonCtrl', function($scope, $log, PeopleService) {
 	
-    var person = $scope.person;
-    
     $scope.savePerson = function ( person ) {
         
         if ($scope.personForm.$invalid) {
@@ -83,4 +88,5 @@ personModule.controller('PersonCtrl', function($scope, $log, PeopleService) {
     $scope.canSave = function() {
 	    return $scope.personForm.$valid && $scope.personForm.$dirty;
 	};
+    
 });

@@ -43,8 +43,6 @@ familyModule.controller('FamilyListCtrl', function($scope, PeopleService) {
 
 familyModule.controller('FamilyCtrl', function($scope, $log, PeopleService) {
 	
-    var family = $scope.family;
-    
     $scope.saveFamily = function ( family ) {
         
         if ($scope.familyForm.$invalid) {
