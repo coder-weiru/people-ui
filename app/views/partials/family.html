@@ -33,7 +33,16 @@
                                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter family name" ng-model="family.name" ng-trim="true" required>
                                             <span class="label label-danger" ng-show="familyForm.name.$error.required">Required!</span>
                                           </div>
-                           
+                                          <div>
+                                                <label class="control-label" for="familyForm">People in the family</label>
+                                                <ul>
+                                                    <li ng-repeat="person in familyPeople">
+                                                        {{person.name}}
+                                                        <a class="btn" ng-click="removePersonFromFamily(person)" data-toggle="tooltip" title="Remove this person from family">   [X]</a>
+                                                    </li>
+                                                </ul>
+                                          </div>  
+                                        
                                           <div class="form-group">  
                                                 
                                               <button class="btn btn-info" ng-disabled="!canSave()" ng-click="saveFamily( family )">Update Family</button>

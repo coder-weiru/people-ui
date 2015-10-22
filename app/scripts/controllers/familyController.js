@@ -7,6 +7,7 @@ var familyModule = angular.module('controller.family', [ 'service.people' ]);
 familyModule.controller('FamilyListCtrl', function($scope, PeopleService) {
 	
     $scope.families = [];
+    $scope.familyPeople = [];
     $scope.selected = null;
     
 	$scope.listFamilies = function() {
@@ -14,11 +15,18 @@ familyModule.controller('FamilyListCtrl', function($scope, PeopleService) {
 			$scope.families = data;
 		});
 	};
+    
+    $scope.listFamilyPeople = function(fid) {
+		PeopleService.getFamilyPeople(fid).then(function(data) {
+			$scope.familyPeople = data;
+		});
+	};
 	
 	$scope.listFamilies();
 	   
     $scope.selectFamily = function(family) {
 		$scope.selected = family;
+        $scope.listFamilyPeople(family.fid);
 	};
 
 	$scope.unselectFamily = function() {
@@ -80,4 +88,8 @@ familyModule.controller('FamilyCtrl', function($scope, $log, PeopleService) {
 	    return $scope.familyForm.$valid && $scope.familyForm.$dirty;
 	};
     
+    $scope.removePersonFromFamily = function(person) {
+        PeopleService.removePersonFromFamily( person.pid, $scope.selected.fid );
+        $scope.listFamilyPeople($scope.selected.fid);
+    };
 });
