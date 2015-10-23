@@ -5,7 +5,8 @@
 angular.module('service.people', [])
 
 .constant('SERVICE_CONFIG', {
-    URL : 'http://localhost:8080/people-restful'
+    //URL : 'http://localhost:8080/people-restful'
+    URL : 'http://54.85.4.139:8181/people-restful-1.0.0-SNAPSHOT'
 })
 
 .factory('PeopleService', function($http, SERVICE_CONFIG) {
