@@ -18,7 +18,7 @@ An AngularJS UI front for [people-restful] (https://github.com/coder-weiru/peopl
  
  1. Git clone https://github.com/coder-weiru/people-ui
  2. Modify URL value in /app/scripts/services/peopleService.js to point to ```http://54.85.4.139:8181/people-restful-1.0.0-SNAPSHOT```
- 3. If your browser does not complain about cross-origin violation, you can directly open /app/index.html
+ 3. If your browser does not complain about cross-origin violation (such as Mozilla Firefox), you can directly open /app/index.html
  4. If your browser complains about cross-origin violation, a local http-server is needed to serve the UI content. (eg. NodeJS http-server)
  5. In case of using Node http-server, run ```npm start``` to start the http server
  6. People-restful service data should be served via this AngularJS app.
