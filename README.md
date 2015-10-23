@@ -1,6 +1,6 @@
 people-ui
 ===============================
-An AngularJS UI front for people-restful service
+An AngularJS UI front for [people-restful] (https://github.com/coder-weiru/people-restful) service
 
 ###1. Technologies used
 * AngularJS 1.3.0
