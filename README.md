@@ -16,7 +16,7 @@ An AngularJS UI front for [people-restful] (https://github.com/coder-weiru/peopl
  
  (A docker tomcat instance hosting the people-restful REST service has been deployed to AWS EC2 server. )
  
- 1. Git clone https://github.com/coder-weiru/people-restful
+ 1. Git clone https://github.com/coder-weiru/people-ui
  2. Modify URL value in /app/scripts/services/peopleService.js to point to ```http://54.85.4.139:8181/people-restful-1.0.0-SNAPSHOT```
  3. If your browser does not complain about cross-origin violation, you can directly open /app/index.html
  4. If your browser complains about cross-origin violation, a local http-server is needed to serve the UI content. (eg. NodeJS http-server)
@@ -27,7 +27,7 @@ An AngularJS UI front for [people-restful] (https://github.com/coder-weiru/peopl
 
  (Please refer to [people-restful] (https://github.com/coder-weiru/people-restful) document to start the service at localhost:8080)
 
- 1. git clone https://github.com/coder-weiru/people-restful
+ 1. Git clone https://github.com/coder-weiru/people-ui
  2. Modify URL value in /app/scripts/services/peopleService.js to point to ```http://localhost:8080/people-restful```
  3. If using Mozilla Firefox browser, you can directly open /app/index.html
  4. If your browser complains about cross-origin violation, a local http-server is needed to serve the UI content. (eg. NodeJS http-server)
