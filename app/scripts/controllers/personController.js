@@ -89,4 +89,23 @@ personModule.controller('PersonCtrl', function($scope, $log, PeopleService) {
 	    return $scope.personForm.$valid && $scope.personForm.$dirty;
 	};
     
+    $scope.canDelete = function() {
+	    return $scope.selected!=null && $scope.selected.pid!=null;
+	};
+    
+    $scope.deletePerson = function( person ) {
+        PeopleService.deletePerson(person.pid).then(function( response ) {
+           var data = response.data;
+            if (response.statusText == 'OK') {
+                $scope.error = false;   
+                $scope.message = 'Person ' + person.name + ' is removed.';
+		    } else {
+                $scope.error = true;   
+		    	$scope.message = 'Error encountered.';
+                $log.error(response.data);
+		    }
+            $scope.listPeople();
+        }); 
+	};
+    
 });

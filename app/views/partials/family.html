@@ -46,7 +46,7 @@
                                           <div class="form-group">  
                                                 
                                               <button class="btn btn-info" ng-disabled="!canSave()" ng-click="saveFamily( family )">Update Family</button>
-                                              
+                                              <button class="btn btn-info" ng-show="canDelete()" ng-click="deleteFamily( family )">Delete {{family.name}}</button>     
                                           </div>
                                     </form>
 							     </div>

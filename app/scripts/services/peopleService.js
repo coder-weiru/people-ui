@@ -5,8 +5,8 @@
 angular.module('service.people', [])
 
 .constant('SERVICE_CONFIG', {
-    //URL : 'http://localhost:8080/people-restful'
-    URL : 'http://54.85.4.139:8181/people-restful-1.0.0-SNAPSHOT'
+    URL : 'http://localhost:8080/people-restful'
+    //URL : 'http://54.85.4.139:8181/people-restful-1.0.0-SNAPSHOT'
 })
 
 .factory('PeopleService', function($http, SERVICE_CONFIG) {
@@ -41,6 +41,14 @@ angular.module('service.people', [])
 		});
 	};
 
+    service.deleteFamily = function(fid) {
+		var serviceUrl = SERVICE_CONFIG.URL + "/delFamily/" + fid;
+		var deleteConfig = {};
+		return $http.delete(serviceUrl, deleteConfig).then(function(response) {
+			return response;
+		});
+	};
+    
 	service.findFamily = function(matchText) {
 		var serviceUrl = SERVICE_CONFIG.URL + "/family/find/" + matchText;
 		var getConfig = {
@@ -51,7 +59,7 @@ angular.module('service.people', [])
 	};
 
     service.getPerson = function(pid) {
-		var serviceUrl = SERVICE_CONFIG.URL + "/person/" + promptid;
+		var serviceUrl = SERVICE_CONFIG.URL + "/person/" + pid;
 		var getConfig = {
 		};
 		return $http.get(serviceUrl, getConfig).then(function(response) {
@@ -75,6 +83,14 @@ angular.module('service.people', [])
 		});
 	};
 
+    service.deletePerson = function(pid) {
+		var serviceUrl = SERVICE_CONFIG.URL + "/delPerson/" + pid;
+		var deleteConfig = {};
+		return $http.delete(serviceUrl, deleteConfig).then(function(response) {
+			return response;
+		});
+	};
+    
 	service.findPerson = function(matchText) {
 		var serviceUrl = SERVICE_CONFIG.URL + "/person/find/" + matchText;
 		var getConfig = {

@@ -92,4 +92,24 @@ familyModule.controller('FamilyCtrl', function($scope, $log, PeopleService) {
         PeopleService.removePersonFromFamily( person.pid, $scope.selected.fid );
         $scope.listFamilyPeople($scope.selected.fid);
     };
+    
+    $scope.canDelete = function() {
+	    return $scope.selected!=null && $scope.selected.fid!=null;
+	};
+    
+    $scope.deleteFamily = function( family ) {
+        PeopleService.deleteFamily(family.fid).then(function( response ) {
+            var data = response.data;
+            if (response.statusText == 'OK') {
+                $scope.error = false;   
+                $scope.message = 'Family ' + family.name + ' is removed.';
+		    } else {
+                $scope.error = true;   
+		    	$scope.message = 'Error encountered.';
+                $log.error(response.data);
+		    }
+            
+            $scope.listFamilies();
+        }); 
+	};
 });
