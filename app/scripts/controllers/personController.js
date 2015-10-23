@@ -73,6 +73,7 @@ personModule.controller('PersonCtrl', function($scope, $log, PeopleService) {
 		    	$scope.message = 'Error encountered.';
                 $log.error(response.data);
 		    }
+            $scope.selected.pid = data.pid;
 		}, function(response) { 
             var data = response.data;
             $scope.error = true;                 

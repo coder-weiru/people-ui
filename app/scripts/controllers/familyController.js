@@ -72,6 +72,7 @@ familyModule.controller('FamilyCtrl', function($scope, $log, PeopleService) {
 		    	$scope.message = 'Error encountered.';
                 $log.error(response.data);
 		    }
+            $scope.selected.fid = data.fid;
 		}, function(response) { 
             var data = response.data;
             $scope.error = true;                 
